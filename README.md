@@ -1,6 +1,6 @@
-# better-auth-studid
+# @studid/better-auth-studid
 
-[![npm version](https://img.shields.io/npm/v/better-auth-studid?color=blue)](https://www.npmjs.com/package/better-auth-studid)
+[![npm version](https://img.shields.io/npm/v/@studid/better-auth-studid?color=blue)](https://www.npmjs.com/package/@studid/better-auth-studid)
 [![License](https://img.shields.io/github/license/andrwagn/better-auth-studid?color=blue)](LICENSE)
 [![CI](https://github.com/andrwagn/better-auth-studid/actions/workflows/ci.yml/badge.svg)](https://github.com/andrwagn/better-auth-studid/actions/workflows/ci.yml)
 
@@ -9,7 +9,7 @@ Sign in with your university — a [Better Auth](https://better-auth.com) plugin
 ## Installation
 
 ```bash
-npm install better-auth-studid
+npm install @studid/better-auth-studid
 ```
 
 ## Quick Start
@@ -19,7 +19,7 @@ npm install better-auth-studid
 ```ts
 // auth.ts
 import { betterAuth } from 'better-auth'
-import { studid } from 'better-auth-studid'
+import { studid } from '@studid/better-auth-studid'
 
 export const auth = betterAuth({
   database: {
@@ -39,7 +39,7 @@ export const auth = betterAuth({
 ```ts
 // auth-client.ts
 import { createAuthClient } from 'better-auth/client'
-import { studidClient } from 'better-auth-studid/client'
+import { studidClient } from '@studid/better-auth-studid/client'
 
 export const authClient = createAuthClient({
   plugins: [studidClient()],

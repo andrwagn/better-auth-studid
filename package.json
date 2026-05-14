@@ -1,5 +1,5 @@
 {
-  "name": "better-auth-studid",
+  "name": "@studid/better-auth-studid",
   "version": "0.1.0",
   "description": "Sign in with your university — Better Auth plugin for Studid (SAML academic verification)",
   "type": "module",
