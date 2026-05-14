@@ -206,17 +206,24 @@ bun run build
 
 ## Publishing
 
-To release a new version:
+Releases are fully automated. When changes land on `main`, the release workflow:
 
-```bash
-# 1. Update version in package.json
-npm version patch  # or minor / major
+1. Analyzes commits since the last tag to determine the next version (patch/minor/major based on [Conventional Commits](https://www.conventionalcommits.org/))
+2. Bumps the version, creates a git tag, and pushes it
+3. Builds and publishes to npm with provenance
+4. Creates a GitHub release with auto-generated notes
 
-# 2. Push the tag
-git push --follow-tags
+### Commit message format
+
+```
+feat: add new feature        → minor bump
+fix: fix a bug               → patch bump
+feat!: breaking change        → major bump
+chore: maintenance           → no release
+docs: documentation          → no release
 ```
 
-The GitHub Actions release workflow will build, publish to npm, and create a GitHub release automatically.
+PR commits are validated automatically by commitlint.
 
 ## License
 
