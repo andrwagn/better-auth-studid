@@ -57,6 +57,7 @@
     "url": "https://github.com/andrwagn/better-auth-studid/issues"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   }
 }
