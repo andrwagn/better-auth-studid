@@ -206,22 +206,17 @@ bun run build
 
 ## Publishing
 
-This package uses [semantic-release](https://semantic-release.gitbook.io/) for automated publishing. To release a new version:
+To release a new version:
 
 ```bash
-# Create a new version tag (semantic-release analyzes commits to determine the version)
-git checkout main
-git pull
-# Ensure your commits follow Conventional Commits format
-# Then push a version tag:
-git tag v0.1.0  # or the appropriate version
-git push origin v0.1.0
+# 1. Update version in package.json
+npm version patch  # or minor / major
+
+# 2. Push the tag
+git push --follow-tags
 ```
 
-The GitHub Actions release workflow will:
-1. Build the package
-2. Run semantic-release to determine version, generate changelog, and publish to npm
-3. Create a GitHub release
+The GitHub Actions release workflow will build, publish to npm, and create a GitHub release automatically.
 
 ## License
 
