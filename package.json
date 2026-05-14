@@ -1,6 +1,6 @@
 {
   "name": "@studid/better-auth-studid",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Sign in with your university — Better Auth plugin for Studid (SAML academic verification)",
   "type": "module",
   "main": "./dist/index.js",
@@ -15,7 +15,9 @@
       "import": "./dist/client.js"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "scripts": {
     "build": "tsc",
