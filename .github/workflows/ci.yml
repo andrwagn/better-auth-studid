@@ -15,6 +15,7 @@ jobs:
       - run: bun install
       - run: bun run lint:types
       - run: bun run build
+      - run: bun run dry-publish
       - uses: wagoid/commitlint-github-action@v6
         with:
           configFile: .commitlintrc.json

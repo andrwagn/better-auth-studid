@@ -25,7 +25,9 @@
     "build": "tsc && tsc -p tsconfig.cjs.json && node scripts/postbuild.cjs",
     "prepublishOnly": "bun run build",
     "lint": "tsc --noEmit",
-    "lint:types": "tsc --noEmit"
+    "lint:types": "tsc --noEmit",
+    "pack": "npm pack --dry-run",
+    "dry-publish": "npm publish --dry-run"
   },
   "peerDependencies": {
     "better-auth": "^1.5.0",
