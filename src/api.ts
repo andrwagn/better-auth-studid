@@ -1,4 +1,4 @@
-import type { StudidVerificationResult } from './types'
+import type { StudidVerificationResult } from './types.js'
 
 export const DEFAULT_STUDID_BASE_URL = 'https://studid.io'
 

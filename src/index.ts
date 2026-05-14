@@ -3,11 +3,11 @@ import { setSessionCookie } from 'better-auth/cookies'
 import { APIError, createAuthEndpoint } from 'better-auth/api'
 import { z } from 'zod'
 
-import { DEFAULT_STUDID_BASE_URL, createVerification, pollVerification } from './api'
-import { IDENTIFIER_TYPE_ORDER } from './types'
-import type { StudidPluginOptions, StudidAuthResult, StudidCallbackState } from './types'
+import { DEFAULT_STUDID_BASE_URL, createVerification, pollVerification } from './api.js'
+import { IDENTIFIER_TYPE_ORDER } from './types.js'
+import type { StudidPluginOptions, StudidAuthResult, StudidCallbackState } from './types.js'
 
-export type { StudidPluginOptions, StudidAuthResult } from './types'
+export type { StudidPluginOptions, StudidAuthResult } from './types.js'
 
 function buildAccountId(entityId: string, authIdentifier: string): string {
   return `${entityId}::${authIdentifier}`

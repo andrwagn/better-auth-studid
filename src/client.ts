@@ -1,5 +1,5 @@
 import type { BetterAuthClientPlugin } from 'better-auth/client'
-import type { studid } from './index'
+import type { studid } from './index.js'
 
 export function studidClient() {
   return {
