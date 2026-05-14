@@ -6,6 +6,8 @@
 
 Sign in with your university — a [Better Auth](https://better-auth.com) plugin for [Studid](https://studid.io). Authenticate users from thousands of institutions across 70+ national federations (eduGAIN) via SAML, with zero SAML knowledge required.
 
+> Try it live: [better-auth-demo.studid.io](https://better-auth-demo.studid.io/)
+
 ## Installation
 
 ```bash
