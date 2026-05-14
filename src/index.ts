@@ -152,7 +152,7 @@ export function studid(options: StudidPluginOptions) {
               )
             : -1
 
-          if (!authIdentifier || actualIndex < minIndex) {
+          if (!authIdentifier || actualIndex > minIndex) {
             if (requirePersistent) {
               throw new APIError('BAD_REQUEST', {
                 message: `Your institution returned a '${authIdentifierType}' identifier, but this app requires at least '${minIdentifierType}' for creating accounts.`,
