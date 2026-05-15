@@ -40,3 +40,16 @@ export const IDENTIFIER_TYPE_ORDER = [
   'email',
   'none',
 ] as const
+
+export function isIdentifierSufficient(
+  authIdentifierType: string | null | undefined,
+  minIdentifierType: (typeof IDENTIFIER_TYPE_ORDER)[number],
+): boolean {
+  const minIndex = IDENTIFIER_TYPE_ORDER.indexOf(minIdentifierType)
+  const actualIndex = authIdentifierType
+    ? IDENTIFIER_TYPE_ORDER.indexOf(
+        authIdentifierType as (typeof IDENTIFIER_TYPE_ORDER)[number],
+      )
+    : -1
+  return actualIndex !== -1 && actualIndex <= minIndex
+}

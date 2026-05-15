@@ -4,16 +4,16 @@ import { APIError, createAuthEndpoint } from 'better-auth/api'
 import { z } from 'zod'
 
 import { DEFAULT_STUDID_BASE_URL, createVerification, pollVerification } from './api.js'
-import { IDENTIFIER_TYPE_ORDER } from './types.js'
+import { isIdentifierSufficient } from './types.js'
 import type { StudidPluginOptions, StudidAuthResult, StudidCallbackState } from './types.js'
 
 export type { StudidPluginOptions, StudidAuthResult } from './types.js'
 
-function buildAccountId(entityId: string, authIdentifier: string): string {
+export function buildAccountId(entityId: string, authIdentifier: string): string {
   return `${entityId}::${authIdentifier}`
 }
 
-function buildUserEmail(accountId: string, emailDomain: string): string {
+export function buildUserEmail(accountId: string, emailDomain: string): string {
   const localPart = accountId.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase().slice(0, 64)
   return `${localPart}@${emailDomain}`
 }
@@ -29,7 +29,7 @@ export function studid(options: StudidPluginOptions) {
     onSuccess,
   } = options
 
-  const callbackPath = '/studid/callback'
+  const callbackPath = '/api/auth/studid/callback'
 
   const buildResult = (
     entityId: string,
@@ -145,14 +145,7 @@ export function studid(options: StudidPluginOptions) {
 
           const { entityId, authIdentifier, authIdentifierType, affiliations } = result.session
 
-          const minIndex = IDENTIFIER_TYPE_ORDER.indexOf(minIdentifierType)
-          const actualIndex: number = authIdentifierType
-            ? IDENTIFIER_TYPE_ORDER.indexOf(
-                authIdentifierType as (typeof IDENTIFIER_TYPE_ORDER)[number],
-              )
-            : -1
-
-          if (!authIdentifier || actualIndex > minIndex) {
+          if (!authIdentifier || !isIdentifierSufficient(authIdentifierType, minIdentifierType)) {
             if (requirePersistent) {
               throw new APIError('BAD_REQUEST', {
                 message: `Your institution returned a '${authIdentifierType}' identifier, but this app requires at least '${minIdentifierType}' for creating accounts.`,

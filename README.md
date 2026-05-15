@@ -84,7 +84,7 @@ studid({
   // Domain for auto-generated user emails (default: 'uni.verification')
   emailDomain: 'myapp.university',
 
-  // Custom callback URL (auto-derived from better-auth baseURL if not set)
+  // Custom callback URL (auto-detected from your app's base URL if not set)
   callbackUrl: 'https://myapp.com/api/auth/studid/callback',
 
   // Redirect after successful auth, or a callback
@@ -107,6 +107,24 @@ authClient.signIn.studid({
 ```
 
 When `callbackURL` is provided, it takes priority over the server-side `onSuccess` configuration.
+
+## Subpath Imports
+
+The package exposes several entry points:
+
+```ts
+// Main plugin (server-side)
+import { studid, buildAccountId, buildUserEmail } from '@studid/better-auth-studid'
+
+// Client plugin
+import { studidClient } from '@studid/better-auth-studid/client'
+
+// API helpers (createVerification, getVerification, pollVerification)
+import { createVerification } from '@studid/better-auth-studid/api'
+
+// Types and utilities (StudidAuthResult, isIdentifierSufficient, etc.)
+import { isIdentifierSufficient, IDENTIFIER_TYPE_ORDER } from '@studid/better-auth-studid/types'
+```
 
 ## User Fields
 
